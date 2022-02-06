@@ -1,6 +1,7 @@
 package com.homesetting.configuration
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import com.homesetting.configuration.databinding.ActivityMainhomeBinding
 
 class Mainhome : AppCompatActivity() {
     private lateinit var binding:ActivityMainhomeBinding
+    private lateinit var player: MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainhomeBinding.inflate(layoutInflater)
@@ -17,6 +19,17 @@ class Mainhome : AppCompatActivity() {
         binding.settingButton.setOnClickListener { onsettingButtonTapped(it) }
         binding.motionButton.setOnClickListener { onmotionButtonTapped(it) }
         binding.kcalButton.setOnClickListener { onkcalButtonTapped(it) }
+        player = MediaPlayer.create(this,R.raw.getdown)
+        player.isLooping = true
+    }
+    override fun onResume() {
+        super.onResume()
+        player.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        player.pause()
     }
     fun onsettingButtonTapped(view: View?){
         val intent = Intent(this, MainActivity::class.java)
