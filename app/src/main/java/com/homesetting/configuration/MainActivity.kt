@@ -1,13 +1,11 @@
 package com.homesetting.configuration
 
 import android.content.Intent
-import android.media.MediaPlayer
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+
 import com.homesetting.configuration.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -5,8 +5,11 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageButton
+import android.widget.Button
 import com.google.firebase.database.FirebaseDatabase
+
+import android.widget.ImageButton
+
 import com.homesetting.configuration.databinding.ActivityMainBinding
 import com.homesetting.configuration.databinding.ActivityMainhomeBinding
 
@@ -17,19 +20,20 @@ class Mainhome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainhomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val database = FirebaseDatabase.getInstance()
+        val ref = database.getReference("hogehoge")
+        val buttonWrite = findViewById<Button>(R.id.button)
+
+        buttonWrite.setOnClickListener {
+            ref.setValue("fugafuga")
+        }
 
         binding.settingButton.setOnClickListener { onsettingButtonTapped(it) }
         binding.motionButton.setOnClickListener { onmotionButtonTapped(it) }
         binding.kcalButton.setOnClickListener { onkcalButtonTapped(it) }
         player = MediaPlayer.create(this,R.raw.getdown)
         player.isLooping = true
-        val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference("hogehoge")
-        val buttonWrite = findViewById<ImageButton>(R.id.motionButton)
 
-        buttonWrite.setOnClickListener {
-            ref.setValue("fugafuga")
-        }
     }
     override fun onResume() {
         super.onResume()
