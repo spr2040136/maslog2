@@ -20,13 +20,7 @@ class Mainhome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainhomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference("hogehoge")
-        val buttonWrite = findViewById<Button>(R.id.button)
 
-        buttonWrite.setOnClickListener {
-            ref.setValue("fugafuga")
-        }
 
         binding.settingButton.setOnClickListener { onsettingButtonTapped(it) }
         binding.motionButton.setOnClickListener { onmotionButtonTapped(it) }
